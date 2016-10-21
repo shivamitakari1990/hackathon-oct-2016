@@ -1,4 +1,3 @@
-
 window.fbAsyncInit = function() {
     FB.init({
         appId      : '1768467906768645',
@@ -19,131 +18,52 @@ window.fbAsyncInit = function() {
     ref.parentNode.insertBefore(js, ref);
 }(document));
 
-function PostToFacebook() {
+function getFeeds() {
     $(document).trigger('fbInit');
     FB.login(function(response) {
-    var tagToSearch = "#" + $("#searchText").val();    
-    if (response.authResponse) {
-        console.log("You are signed into FB");
-        var access_token = FB.getAuthResponse()['accessToken'];
-        console.log(access_token);
-       
-        
-        FB.api('/me/movies', function(response) {
-            console.log(response)
-            console.log(response.data)
-            if(response && !response.error){
-            for(i in response.data){
-                var currentlikes = response.data[i];
-                console.log(currentlikes)
-            }}
-        })
-        
-    }   else {
-        // cancelled
-    }
-}, {scope: 'user_movies,publish_actions,manage_pages,publish_pages', perms:'manage_pages'});
-}
+        var tagToSearch = "#" + $("#searchText").val();
+        if (response.authResponse) {
+            var result = {};
+            var resultArray = [];
 
-function SearchHashtag() {
-     $(document).trigger('fbInit');
-    FB.login(function(response) {
-    var tagToSearch = "#" + $("#searchText").val();    
-    if (response.authResponse) {
-        console.log("You are signed into FB");
-        var access_token = FB.getAuthResponse()['accessToken'];
-        console.log(access_token);
-       
-        
-        FB.api('/me/location', function(response) {
-            console.log(response)
-            console.log(response.data)
-            // if(response && !response.error){
-            // for(i in response.data){
-            //     var currentlikes = response.data[i];
-            //     console.log(currentlikes)
-            // }}
-        })
-        
-    }   else {
-        // cancelled
-    }
-}, {scope: 'user_location,publish_actions,manage_pages,publish_pages', perms:'manage_pages'});
-}
+            console.log("You are signed into FB");
+            var access_token = FB.getAuthResponse()['accessToken'];
 
-function getUserlikes(params) {
-    var result=[]
-    $(document).trigger('fbInit');
-    FB.login(function(response) {
-    var tagToSearch = "#" + $("#searchText").val();    
-    if (response.authResponse) {
-        console.log("You are signed into FB");
-        var access_token = FB.getAuthResponse()['accessToken'];
-        console.log(access_token);
-        
-        FB.api('/me/likes', function(response) {
-            console.log(response)
-            console.log(response.data)
-            
-            if(response && !response.error){
-            for(i in response.data){
-                var currentlikes = response.data[i];
-                console.log(currentlikes)
-                console.log(currentlikes.name)
-                result.push(currentlikes.name)
-            }
-        console.log(result)}
-        })
-        
-    }   else {
-        // cancelled
-    }
-}, {scope: 'user_likes,publish_actions,manage_pages,publish_pages', perms:'manage_pages'});
-return result
-}
+            FB.api('/me/movies', function(response) {
+                if(response && !response.error){
+                    for(i in response.data){
+                        var currentMovies = response.data[i];
+                        resultArray.push(currentMovies.name);
+                    }
+                    result.movies = Object.assign({}, resultArray);
+                }
+            });
 
-function getBooksdetails() {
-    $(document).trigger('fbInit');
-    FB.login(function(response) {
-    var tagToSearch = "#" + $("#searchText").val();    
-    if (response.authResponse) {
-        console.log("You are signed into FB");
-        var access_token = FB.getAuthResponse()['accessToken'];
-        console.log(access_token);
-       
-        
-        FB.api('/me/books', function(response) {
-            console.log(response)
-            console.log(response.data)
-            if(response && !response.error){
-            for(i in response.data){
-                var currentlikes = response.data[i];
-                console.log(currentlikes)
-            }}
-        })
-        
-    }
-}, {scope: 'user_books', perms:'manage_pages'});
-}
+            FB.api('/me/likes', function(response) {
+                resultArray = [];
+                if(response && !response.error){
+                    for(i in response.data){
+                        var currentlikes = response.data[i];
+                        resultArray.push(currentlikes.name);
+                    }
+                    result.likes = Object.assign({}, resultArray);
+                }
+            });
 
-function getTelevisiondetails() {
-    $(document).trigger('fbInit');
-    FB.login(function(response) {
-    var tagToSearch = "#" + $("#searchText").val();
-    if (response.authResponse) {
-        console.log("You are signed into FB");
-        var access_token = FB.getAuthResponse()['accessToken'];
-        console.log(access_token);
-        FB.api('/me/television', function(response) {
-            console.log(response)
-            console.log(response.data)
-            if(response && !response.error){
-            for(i in response.data){
-                var currentlikes = response.data[i];
-                console.log(currentlikes)
-            }}
-        })
-        
-    }
-}, {scope: 'user_television', perms:'manage_pages'});
+            FB.api('/me/books', function(response) {
+                resultArray = [];
+                if(response && !response.error){
+                    for(i in response.data){
+                        var currentBooks = response.data[i];
+                        resultArray.push(currentBooks.name);
+                    }
+                    result.books = Object.assign({}, resultArray);
+                }
+            });
+
+            console.log(result);
+        } else {
+            // Do Something
+        }
+    }, {scope: 'user_books, user_likes, user_movies, publish_actions, manage_pages, publish_pages', perms:'manage_pages'});
 }
