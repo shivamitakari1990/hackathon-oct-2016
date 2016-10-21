@@ -1,8 +1,36 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: #e9ebee;
+
 }
 
 a {
   color: #00B7FF;
+}
+
+#heahline {
+  padding-left: 41%;
+  font-size: 48px;
+  font-family: monospace;
+  font-style: inherit;
+  font-weight: 300;
+}
+
+#container {
+  padding-left: 43%;
+  padding-top: 28px;
+}
+
+#container button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
 }

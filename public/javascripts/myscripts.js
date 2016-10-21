@@ -63,17 +63,12 @@ function getFeeds() {
             });
 
             window.setTimeout(function() {
-                console.log(result);
                 // Ajax call
                 $.ajax({
                     url: '/search',
-                    type: 'POST',
-                    dataType: "json",
+                    type: 'GET',
                     data: result,
                     success: function(data) {
-                        console.log('dd');
-                        console.log(result);
-                        console.log('dd');
                         // Pass data to template
                         $('#container').html(data);
                     },
@@ -81,7 +76,7 @@ function getFeeds() {
                         console.log(e.message);
                     }
                 });
-            }, 2000)
+            }, 2000);
 
         }
     }, {scope: 'user_books, user_likes, user_movies, publish_actions, manage_pages, publish_pages', perms:'manage_pages'});

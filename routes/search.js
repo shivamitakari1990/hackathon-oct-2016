@@ -9,12 +9,12 @@ var googleSearch = new GoogleSearch({
 });
 
 /* GET home page. */
-router.post('/search', function(req, res, next) {
+router.get('/search', function(req, res, next) {
     //get the query string
     var movies = req.body.movies;
   var books = req.body.books;
   var likes = req.body.likes;
-  var likesArray = likes.split(',');
+  //var likesArray = likes.split(',');
     var query = 'golf';//likesArray.shift();
     var config = {
       q: query,
