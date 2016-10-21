@@ -62,6 +62,20 @@ function getFeeds() {
             });
 
             console.log(result);
+
+            // Ajax call
+            $.ajax({
+              url: '/search',
+              type: 'GET',
+              data: result,
+              success: function(data) {
+                // Pass data to template
+                $('#container').html(data);
+              },
+              error: function(e) {
+                console.log(e.message);
+              }
+            });
         } else {
             // Do Something
         }
