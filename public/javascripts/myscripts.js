@@ -35,49 +35,54 @@ function getFeeds() {
                         var currentMovies = response.data[i];
                         resultArray.push(currentMovies.name);
                     }
-                    result.movies = Object.assign({}, resultArray);
+                    result.movies = resultArray.join();
+
                 }
             });
 
             FB.api('/me/likes', function(response) {
-                resultArray = [];
+                var resultArray = [];
                 if(response && !response.error){
                     for(i in response.data){
                         var currentlikes = response.data[i];
                         resultArray.push(currentlikes.name);
                     }
-                    result.likes = Object.assign({}, resultArray);
+                    result.likes = resultArray.join();
                 }
             });
 
             FB.api('/me/books', function(response) {
-                resultArray = [];
+                var resultArray = [];
                 if(response && !response.error){
                     for(i in response.data){
                         var currentBooks = response.data[i];
                         resultArray.push(currentBooks.name);
                     }
-                    result.books = Object.assign({}, resultArray);
+                    result.books = resultArray.join();
                 }
             });
 
-            console.log(result);
+            window.setTimeout(function() {
+                console.log(result);
+                // Ajax call
+                $.ajax({
+                    url: '/search',
+                    type: 'POST',
+                    dataType: "json",
+                    data: result,
+                    success: function(data) {
+                        console.log('dd');
+                        console.log(result);
+                        console.log('dd');
+                        // Pass data to template
+                        $('#container').html(data);
+                    },
+                    error: function(e) {
+                        console.log(e.message);
+                    }
+                });
+            }, 2000)
 
-            // Ajax call
-            $.ajax({
-              url: '/search',
-              type: 'GET',
-              data: result,
-              success: function(data) {
-                // Pass data to template
-                $('#container').html(data);
-              },
-              error: function(e) {
-                console.log(e.message);
-              }
-            });
-        } else {
-            // Do Something
         }
     }, {scope: 'user_books, user_likes, user_movies, publish_actions, manage_pages, publish_pages', perms:'manage_pages'});
 }

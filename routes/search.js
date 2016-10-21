@@ -4,28 +4,34 @@ var _ = require('lodash');
 var router = express.Router();
 var GoogleSearch = require('google-search');
 var googleSearch = new GoogleSearch({
-  key: 'AIzaSyCET7mR5tt8IRFck489wxqrD3ButhVVjpQ',
-  cx: '002246757074746565668:zel-tatiewm'
+  cx: '002246757074746565668:m37433nc6lw',
+  key: 'AIzaSyCET7mR5tt8IRFck489wxqrD3ButhVVjpQ'
 });
 
 /* GET home page. */
-router.get('/search', function(req, res, next) {
+router.post('/search', function(req, res, next) {
     //get the query string
-    var query = 'game';
+    var movies = req.body.movies;
+  var books = req.body.books;
+  var likes = req.body.likes;
+  var likesArray = likes.split(',');
+    var query = likesArray.shift();
     var config = {
-      q: 'golf',
+      q: query,
       start: 5,
       num: 10 // Number of search results to return between 1 and 10, inclusive
     };
+  console.log('$$$$');
+  console.log(config);
     googleSearch.build(config, function(error, response) {
+      console.log(response);
       if (typeof response.items !== 'undefined') {
         var items = response.items;
-        console.log('got from googleeee');
           console.log(items);
           res.render('search', { title: 'Express', content: items });
       }
       else {
-        console.log('failed to load search')
+        console.log('failed to load search', error)
         res.render('index', { title: 'Express'});
       }
     });
