@@ -5,14 +5,11 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 // include google cse
-var GoogleSearch = require('google-search');
-var googleSearch = new GoogleSearch({
-  key: 'AIzaSyCET7mR5tt8IRFck489wxqrD3ButhVVjpQ',
-  cx: '002246757074746565668:zel-tatiewm'
-});
 
 
 var routes = require('./routes/index');
+var routes = require('./routes/search');
+//var route1 = require('./routes/search');
 
 var app = express();
 
@@ -29,18 +26,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
-
-app.use('/google-cse', function(req, res, next) {
-  googleSearch.build({
-    q: "golf",
-    start: 0,
-    num: 10
-  }, function(error, response) {
-    console.log(response);
-  });
-res.send('dd');
-  //res.render('google-cse', { title: 'Express' });
-});
+//app.use('/search', route1);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
