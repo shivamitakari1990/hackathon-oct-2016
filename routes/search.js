@@ -5,7 +5,7 @@ var router = express.Router();
 var GoogleSearch = require('google-search');
 var googleSearch = new GoogleSearch({
   cx: '002246757074746565668:m37433nc6lw',
-  key: 'AIzaSyCET7mR5tt8IRFck489wxqrD3ButhVVjpQ'
+  key: 'AIzaSyB9UyrrFsuuMqpYHs3c_d3jtYou2QtBT2g'
 });
 
 /* GET home page. */
@@ -15,7 +15,7 @@ router.post('/search', function(req, res, next) {
   var books = req.body.books;
   var likes = req.body.likes;
   var likesArray = likes.split(',');
-    var query = likesArray.shift();
+    var query = 'golf';//likesArray.shift();
     var config = {
       q: query,
       start: 5,
