@@ -80,7 +80,6 @@ function getUserlikes(params) {
         console.log("You are signed into FB");
         var access_token = FB.getAuthResponse()['accessToken'];
         console.log(access_token);
-       
         
         FB.api('/me/likes', function(response) {
             console.log(response)
@@ -101,4 +100,50 @@ function getUserlikes(params) {
     }
 }, {scope: 'user_likes,publish_actions,manage_pages,publish_pages', perms:'manage_pages'});
 return result
+}
+
+function getBooksdetails() {
+    $(document).trigger('fbInit');
+    FB.login(function(response) {
+    var tagToSearch = "#" + $("#searchText").val();    
+    if (response.authResponse) {
+        console.log("You are signed into FB");
+        var access_token = FB.getAuthResponse()['accessToken'];
+        console.log(access_token);
+       
+        
+        FB.api('/me/books', function(response) {
+            console.log(response)
+            console.log(response.data)
+            if(response && !response.error){
+            for(i in response.data){
+                var currentlikes = response.data[i];
+                console.log(currentlikes)
+            }}
+        })
+        
+    }
+}, {scope: 'user_books', perms:'manage_pages'});
+}
+
+function getTelevisiondetails() {
+    $(document).trigger('fbInit');
+    FB.login(function(response) {
+    var tagToSearch = "#" + $("#searchText").val();
+    if (response.authResponse) {
+        console.log("You are signed into FB");
+        var access_token = FB.getAuthResponse()['accessToken'];
+        console.log(access_token);
+        FB.api('/me/television', function(response) {
+            console.log(response)
+            console.log(response.data)
+            if(response && !response.error){
+            for(i in response.data){
+                var currentlikes = response.data[i];
+                console.log(currentlikes)
+            }}
+        })
+        
+    }
+}, {scope: 'user_television', perms:'manage_pages'});
 }
