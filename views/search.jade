@@ -64,7 +64,7 @@ html
       background: #333;
       }
       .grid-container {
-      display: none;
+
       }
       /* ----- Image grids ----- */
       ul.rig {
@@ -136,165 +136,21 @@ html
   body
     .wrapper
       .container
-        h1 Responsive Image Grids Using CSS
-        ul.grid-nav
-          li
-            a.active(href='#', data-id='two-columns') 2 Columns
-          li
-            a(href='#', data-id='three-columns') 3 Columns
-          li
-            a(href='#', data-id='four-columns') 4 Columns
-        hr
-        #two-columns.grid-container(style='display:block;')
-          ul.rig.columns-2
-            li
-              img(src='images/pri_001.jpg')
-              h3 Image Title
-              p
-                | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            li
-              img(src='images/pri_002.jpg')
-              h3 Image Title
-              p
-                | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            li
-              img(src='images/pri_003.jpg')
-              h3 Image Title
-              p
-                | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            li
-              img(src='images/pri_004.jpg')
-              h3 Image Title
-              p
-                | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        h1 FACEBOOK POWERED SEARCH ENGINE
+        
         // /#two-columns
         #three-columns.grid-container
           ul.rig.columns-3
-            li
-              img(src='images/pri_001.jpg')
-              h3 Image Title
-              p
-                | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            li
-              img(src='images/pri_002.jpg')
-              h3 Image Title
-              p
-                | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            li
-              img(src='images/pri_003.jpg')
-              h3 Image Title
-              p
-                | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            li
-              img(src='images/pri_004.jpg')
-              h3 Image Title
-              p
-                | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            li
-              img(src='images/pri_005.jpg')
-              h3 Image Title
-              p
-                | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            li
-              img(src='images/pri_006.jpg')
-              h3 Image Title
-              p
-                | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            li
-              img(src='images/pri_007.jpg')
-              h3 Image Title
-              p
-                | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            li
-              img(src='images/pri_008.jpg')
-              h3 Image Title
-              p
-                | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            li
-              img(src='images/pri_009.jpg')
-              h3 Image Title
-              p
-                | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            each item in content
+              li
+                a(href=item.link)
+                  img(src='images/pri_001.jpg')
+                  h3 !{item.title}
+                p
+                  !{item.snippet}
+         
         // /#three-columns
-        #four-columns.grid-container
-          ul.rig.columns-4
-            li
-              img(src='images/pri_001.jpg')
-              h3 Image Title
-              p
-                | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            li
-              img(src='images/pri_002.jpg')
-              h3 Image Title
-              p
-                | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            li
-              img(src='images/pri_003.jpg')
-              h3 Image Title
-              p
-                | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            li
-              img(src='images/pri_004.jpg')
-              h3 Image Title
-              p
-                | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            li
-              img(src='images/pri_005.jpg')
-              h3 Image Title
-              p
-                | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            li
-              img(src='images/pri_006.jpg')
-              h3 Image Title
-              p
-                | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            li
-              img(src='images/pri_007.jpg')
-              h3 Image Title
-              p
-                | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            li
-              img(src='images/pri_008.jpg')
-              h3 Image Title
-              p
-                | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            li
-              img(src='images/pri_009.jpg')
-              h3 Image Title
-              p
-                | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            li
-              img(src='images/pri_010.jpg')
-              h3 Image Title
-              p
-                | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            li
-              img(src='images/pri_011.jpg')
-              h3 Image Title
-              p
-                | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            li
-              img(src='images/pri_012.jpg')
-              h3 Image Title
-              p
-                | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        // /#four-columns
         hr
         p.centered
-          | Demo by 
-          a(href='http://alijafarian.com') Ali Jafarian
       // /.container
     // /.wrapper
-    script(src='http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js', type='text/javascript')
-    script(type='text/javascript').
-      $(document).ready(function() {
-      $('.grid-nav li a').on('click', function(event){
-      event.preventDefault();
-      $('.grid-container').fadeOut(500, function(){
-      $('#' + gridID).fadeIn(500);
-      });
-      var gridID = $(this).attr("data-id");
-      $('.grid-nav li a').removeClass("active");
-      $(this).addClass("active");
-      });
-      });

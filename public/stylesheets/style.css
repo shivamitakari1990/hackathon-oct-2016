@@ -35,3 +35,7 @@ a {
   cursor: pointer;
   margin-left: 43%;
 }
+
+#three-columns li a{
+  text-decoration: none;
+}
